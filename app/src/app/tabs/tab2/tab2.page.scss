@@ -1,0 +1,51 @@
+.progress {
+  padding-left: 3em;
+  list-style-type: none !important;
+}
+ul.progress li {
+  position: relative;
+  margin-bottom: 0;
+  padding-bottom: 1em;
+}
+
+ul.progress li:after {
+  content: "";
+  position: absolute;
+  left: -2.5em;
+  top: 0px;
+  border: 0.6em solid #2b9f02;
+  border-radius: 50%;
+}
+
+ul.progress li:before {
+  content: "";
+  position: absolute;
+  left: -2em;
+  border-left: 2px dashed #2b9f02;
+  height: 120%;
+  width: 1px;
+}
+.round-btn-bordered {
+  border: 1px solid #2b9f02;
+  text-align: center;
+  border-radius: 15px;
+  padding: 4px 12px;
+  font-size: 0.8em;
+  margin: 0;
+  width: fit-content;
+}
+.wallet-heading {
+  margin: 4em 0 1em 0;
+}
+.earned-card {
+  box-shadow: none;
+  padding: 1.5em 1em;
+  h4 {
+    margin: 0;
+  }
+}
+ion-button {
+  font-size: 14px;
+  margin-bottom: 1em;
+  height: 4em;
+}

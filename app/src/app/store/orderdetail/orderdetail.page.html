@@ -1,0 +1,48 @@
+<ion-content>
+  <ion-fab class="btn-fab">
+    <button  routerLink="/storelist" class="close-btn primary-color" ion-fab><ion-icon name="close"></ion-icon></button>
+  </ion-fab>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-grid>
+    <h4>Order list</h4>
+    <ion-card *ngIf="order && order.orders.length" class="no-shadow ion-no-margin">
+      <h4>{{order.orders[0].user.firstName}} {{order.orders[0].user.lastName}}</h4>
+      <p class="ion-no-margin">+91 {{order.orders[0].user.mobile}}</p>
+      <p *ngIf="order.orders[0].user.email" class="ion-no-margin">{{order.orders[0].user.email}}</p>
+    </ion-card>
+    <ion-card *ngIf="order && order.orders.length" class="no-shadow ion-no-margin">
+      <h4>Wash ID-6409090{{order.orders[0].id}}</h4>
+      <p class="ion-no-margin">{{order.orders[0].startTime | dateTime}}</p>
+      <p class="ion-no-margin">Weight- {{order.orders[0].weight}}Kg Price: ₹{{order.orders[0].amount}}</p>
+      <p class="ion-no-margin">{{order.address}} outlet</p>
+      <p class="ion-no-margin primary-color">Payment : <strong>{{order.orders[0].paymentStatus}}</strong> </p>
+      <p class="ion-no-margin primary-color">Token :<strong>{{order.orders[0].token}}</strong></p>
+
+    </ion-card>
+
+    <h4>Order Status : <span *ngIf="order && order.orders.length">{{order.orders[0].orderStatus}}</span></h4>
+    <ion-card class="button-card" *ngIf="order && order.orders.length">
+      <ion-button [ngClass]="{'primary-border': order.orders[0].orderStatus !='order received', 'btn-primary-color':order.orders[0].orderStatus =='order received'}" (click)="updateOrderStatus('order received')">Order Received</ion-button>
+      <ion-button [ngClass]="{'primary-border': order.orders[0].orderStatus !='wash completed', 'btn-primary-color':order.orders[0].orderStatus =='wash completed'}" (click)="updateOrderStatus('wash completed')">Wash completed</ion-button>
+      <ion-button [ngClass]="{'primary-border': order.orders[0].orderStatus !='wash intiated', 'btn-primary-color':order.orders[0].orderStatus =='wash intiated'}" (click)="updateOrderStatus('wash intiated')">Wash Intiated</ion-button>
+      <ion-button [ngClass]="{'primary-border': order.orders[0].orderStatus !='packed', 'btn-primary-color':order.orders[0].orderStatus =='packed'}" (click)="updateOrderStatus('packed')">Packed to deliver</ion-button>
+      <ion-button [ngClass]="{'primary-border': order.orders[0].orderStatus !='inpogress', 'btn-primary-color':order.orders[0].orderStatus =='inpogress'}" (click)="updateOrderStatus('inpogress')">In Progress</ion-button>
+      <ion-button [ngClass]="{'primary-border': order.orders[0].orderStatus !='delivered', 'btn-primary-color':order.orders[0].orderStatus =='delivered'}" [disabled]="order.orders[0].paymentStatus=='due'" (click)="updateOrderStatus('delivered')">Deliver</ion-button>
+    </ion-card>
+
+    <ion-card class="button-action-card">
+      <!-- <ion-button class="primary-border">Payment Pending</ion-button>
+      <ion-button class="primary-border">Order status</ion-button> -->
+      <ion-button color="primary" class="primary-border" (click)="callUser()">Call</ion-button>
+      <ion-button color="primary" class="primary-border" (click)="sendEmail()"> Email</ion-button>
+      <ion-button style="width:100%;padding: 0 7px;" *ngIf="order && order.orders.length"
+        [disabled]="order.orders[0].orderStatus == '' && order.orders[0].paymentStatus=='due'" class="primary-border" (click)="sendInvoice()">
+        Send Invoice</ion-button>
+      <!-- <ion-button class="primary-border">Send survey Form</ion-button> -->
+    </ion-card>
+  </ion-grid>
+
+</ion-content>

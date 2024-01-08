@@ -1,0 +1,15 @@
+ion-radio-group {
+  --ion-safe-area-left: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+
+  ion-radio {
+    margin-right: 0.2em;
+    margin-left: 1px;
+  }
+}
+
+ion-item {
+  --ion-safe-area-left: 0;
+  --padding-start: 0;
+}

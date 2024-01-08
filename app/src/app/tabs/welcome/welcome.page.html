@@ -1,0 +1,31 @@
+<ion-content>
+  <ion-grid>
+
+    <p class="name" *ngIf="user">Hey {{user.firstName}}</p>
+    <h1 class="welcome">Welcome to, <br> Wash <span class="company-name">by Coin Laundromat</span></h1>
+    <h5 class="thin-font color-white ion-no-margin">
+      Unlocking new deals every day, choose the best deal
+      you have today
+    </h5>
+
+    <div class="margin-top-welcome">
+      <ion-item *ngIf="franchise" class="input-transperent-border">
+        <ion-label>Get {{franchise.discount}}% reward on your payments</ion-label>
+        <ion-radio slot="start" value="biff" disabled="true" checked></ion-radio>
+      </ion-item>
+      <ion-item class="input-transperent-border">
+        <ion-label>You have {{totalWalletBalance}} coins in your wallet use them
+          at the time of billing</ion-label>
+        <ion-radio slot="start" value="biff" disabled="true" checked></ion-radio>
+      </ion-item>
+      <ion-item *ngIf="franchise && franchise.instaCoupons" class="input-transperent-border">
+        <ion-label>Use coupon "{{franchise.instaCoupons[0].coupon}}" and get {{franchise.instaCoupons[0].coins}} coins off</ion-label>
+        <ion-radio slot="start" value="biff" disabled="true" checked></ion-radio>
+      </ion-item>
+    </div>
+
+
+  </ion-grid>
+  <ion-button class="white-btn" expand="block" (click)="submit()">Start</ion-button>
+
+</ion-content>

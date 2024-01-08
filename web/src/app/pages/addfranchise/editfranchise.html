@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Forgot Password ?</h1>
+<div mat-dialog-content style="margin-top:2em; width:100%">
+    <mat-form-field>
+        <mat-label>Franchise Name</mat-label>
+        <input matInput [(ngModel)]="data.name">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Franchise Phone</mat-label>
+        <input matInput [(ngModel)]="data.mobile">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Franchise Address</mat-label>
+        <textarea matInput [(ngModel)]="data.address"></textarea>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions class="float-right">
+    <button mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>Update</button>
+</div>

@@ -1,0 +1,56 @@
+<ion-content>
+
+  <div class="scanner-outline">
+    <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1080.000000 1080.000000" preserveAspectRatio="xMidYMid meet">
+      <metadata>
+        Created by potrace 1.16, written by Peter Selinger 2001-2019
+      </metadata>
+      <g transform="translate(0.000000,1080.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+        <path d="M0 9190 l0 -1610 260 0 260 0 0 1335 0 1335 1435 0 1435 0 0 275 0
+ 275 -1695 0 -1695 0 0 -1610z" />
+        <path d="M7920 10525 l0 -275 1205 0 1205 0 0 -1335 0 -1335 235 0 235 0 0
+ 1610 0 1610 -1440 0 -1440 0 0 -275z" />
+        <path class="scan-line" d="M570 7480 l0 -50 4860 0 4860 0 0 50 0 50 -4860 0 -4860 0 0 -50z" />
+        <path d="M0 1535 l0 -1535 1695 0 1695 0 0 230 0 230 -1435 0 -1435 0 0 1305
+ 0 1305 -260 0 -260 0 0 -1535z" />
+        <path d="M10330 1765 l0 -1305 -1205 0 -1205 0 0 -230 0 -230 1440 0 1440 0 0
+ 1535 0 1535 -235 0 -235 0 0 -1305z" />
+      </g>
+    </svg>
+  </div>
+
+
+  <ion-grid id="scanButtons">
+    <!-- <ion-row>
+      <ion-col>
+
+        <div class="scan ion-activatable" (click)="scan()">
+          <h4>Self Operated</h4>
+          <ion-ripple-effect></ion-ripple-effect>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="scan ion-activatable" (click)="scanDrop()">
+          <h4>Drop Off</h4>
+          <ion-ripple-effect></ion-ripple-effect>
+        </div>
+      </ion-col>
+    </ion-row> -->
+    <p style="font-size: 1.2em;" class="thick-font primary-color">*<Strong>Scan QR to start the order</Strong></p>
+    <p style="font-size: 1.2em;" text-center>or</p>
+    <p style="font-size: 1.2em;">*Enter MachineId to start the order</p>
+    <ion-row>
+
+      <ion-col size='9'>
+        <ion-input type="number" [(ngModel)]="machineId" class="num-input" placeholder="Machine-Id">
+        </ion-input>
+      </ion-col>
+      <ion-col size='3' class="ion-no-padding">
+        <ion-button expand="block" color="primary" (click)="proceedToManual()">Go</ion-button>
+        <!-- <ion-button expand="block" color="primary" (click)="showPaymentSucessPopUp()">Go</ion-button> -->
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

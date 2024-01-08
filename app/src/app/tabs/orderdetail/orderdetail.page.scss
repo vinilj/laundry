@@ -1,0 +1,34 @@
+.btn-row {
+  margin: 0 -10px;
+  background: var(--ion-color-primary);
+  ion-button {
+    --background: none;
+    width: 48%;
+    --box-shadow: none;
+  }
+}
+.btn-row-gray {
+  margin: 0 -10px;
+  // background: var(--ion-color-primary);
+  background: #e5e5e5;
+  ion-button {
+    --background: none;
+    width: 48%;
+    --box-shadow: none;
+    color: black;
+  }
+}
+h1 {
+    font-weight: 900;
+    font-size: 4em;
+    color: #e5e5e5;
+}
+h5 {
+  margin: 0;
+}
+.thin-font {
+  font-weight: 500;
+}
+.card-heading{
+    margin: 1em 0;
+}

@@ -1,0 +1,268 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+/** Ionic CSS Variables **/
+:root {
+  /** primary **/
+  --ion-color-primary: #642e58;
+  --ion-color-primary-rgb: #642e58;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: #642e58;
+  --ion-color-primary-shade: #642e58;
+  --ion-color-primary-tint: #642e58;
+
+  // --ion-color-primary: #3880ff;
+  // --ion-color-primary-rgb: 56, 128, 255;
+  // --ion-color-primary-contrast: #ffffff;
+  // --ion-color-primary-contrast-rgb: 255, 255, 255;
+  // --ion-color-primary-shade: #3171e0;
+  // --ion-color-primary-tint: #4c8dff;
+
+  /** secondary **/
+  --ion-color-secondary: #ffffff;
+  --ion-color-secondary-rgb: 12, 209, 232;
+  --ion-color-secondary-contrast: #616161;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #ffffff;
+  --ion-color-secondary-tint: #ffffff;
+
+  /** tertiary **/
+  --ion-color-tertiary: #7044ff;
+  --ion-color-tertiary-rgb: 112, 68, 255;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #633ce0;
+  --ion-color-tertiary-tint: #7e57ff;
+
+  /** success **/
+  --ion-color-success: #10dc60;
+  --ion-color-success-rgb: 16, 220, 96;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #0ec254;
+  --ion-color-success-tint: #28e070;
+
+  /** warning **/
+  --ion-color-warning: #ffce00;
+  --ion-color-warning-rgb: 255, 206, 0;
+  --ion-color-warning-contrast: #ffffff;
+  --ion-color-warning-contrast-rgb: 255, 255, 255;
+  --ion-color-warning-shade: #e0b500;
+  --ion-color-warning-tint: #ffd31a;
+
+  /** danger **/
+  --ion-color-danger: #f04141;
+  --ion-color-danger-rgb: 245, 61, 61;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #d33939;
+  --ion-color-danger-tint: #f25454;
+
+  /** dark **/
+  --ion-color-dark: #222428;
+  --ion-color-dark-rgb: 34, 34, 34;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #1e2023;
+  --ion-color-dark-tint: #383a3e;
+
+  /** medium **/
+  --ion-color-medium: #989aa2;
+  --ion-color-medium-rgb: 152, 154, 162;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #86888f;
+  --ion-color-medium-tint: #a2a4ab;
+
+  /** light **/
+  --ion-color-light: #f4f5f8;
+  --ion-color-light-rgb: 244, 244, 244;
+  --ion-color-light-contrast: #000000;
+  --ion-color-light-contrast-rgb: 0, 0, 0;
+  --ion-color-light-shade: #d7d8da;
+  --ion-color-light-tint: #f5f6f9;
+
+  /** White **/
+
+  --ion-color-white: #ffffff;
+  --ion-color-white: #ffffff;
+  --ion-color-white-rgb: #ffffff;
+  --ion-color-white-contrast: #ffffff;
+  --ion-color-white-contrast-rgb: #ffffff;
+  --ion-color-white-shade: #ffffff;
+  --ion-color-white-tint: #ffffff;
+}
+
+:root {
+  .transperent-btn {
+    --background: none;
+    --box-shadow: none;
+  }
+  ion-grid {
+    padding: 0 0.5em;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    letter-spacing: -0.333333px;
+    color: #000000;
+    margin-bottom: 5px;
+  }
+
+  p {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    line-height: 1.1em;
+    letter-spacing: -0.333333px;
+    color: #919191;
+  }
+  .color-gray {
+    color: #919191;
+  }
+  ion-button {
+    font-size: 1.2em;
+    font-family: "Poppins", sans-serif;
+    padding: 0 3px;
+    height: 3em;
+    line-height: 1.3em;
+    text-align: center;
+    letter-spacing: -0.333333px;
+    --box-shadow: none;
+    text-transform: none !important;
+  }
+  ion-input {
+    font-family: "Poppins", sans-serif;
+    letter-spacing: -0.333333px;
+  }
+  ion-label {
+    font-size: 14px !important;
+    font-family: "Poppins", sans-serif !important;
+  }
+
+  ion-card {
+    margin-top: 1.4em;
+    margin-bottom: 1.4em;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 1.2em 0.7em 0 0.7em;
+    box-shadow: 0px 3px 4px rgba(229, 229, 229, 0.5);
+  }
+  hr {
+    margin-top: 2em;
+    border-top: thin dashed #a4036f;
+  }
+
+  .num-input {
+    //    font-family: 'Poppins', sans-serif;
+    border: 1px solid #787878;
+    box-sizing: border-box;
+    border-radius: 5px;
+    height: 3.3em;
+  }
+  .input-position {
+    position: absolute;
+    width: 100%;
+    bottom: 2%;
+  }
+  .primary-color {
+    color: var(--ion-color-primary);
+  }
+  .background-primary {
+    --background: var(--ion-color-primary);
+    background: var(--ion-color-primary);
+  }
+  .profile-box {
+    border-radius: 50%;
+    float: left;
+    margin: 1em 1em;
+  }
+  .dispay-grid {
+    display: grid;
+  }
+  .wallet-card {
+    --background: #ffffff;
+    height: 6em;
+    padding: 0 0.7em;
+    display: grid;
+    a {
+      display: grid;
+    }
+    ion-row {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+
+    img {
+      height: 2em;
+      width: auto;
+      float: left;
+      margin-right: 10px;
+      margin-top: 2px;
+    }
+    h3 {
+      line-height: 18px;
+      margin: 8px 0;
+    }
+  }
+  .ion-no-margin-top {
+    margin-top: 0;
+  }
+  .wallet-history-card {
+    padding: 10px 2em;
+    box-shadow: none;
+    margin: 0 -1em;
+  }
+  .success-color {
+    color: var(--ion-color-success);
+  }
+  .danger-color {
+    color: var(--ion-color-danger);
+  }
+  .gray-color {
+    --background: #f6f6f6;
+  }
+  .label-color {
+    color: #787878;
+  }
+  .thin-font {
+    font-weight: 500;
+  }
+  .input-transperent-border {
+    --ion-item-border-color: transparent;
+  }
+  .tab-selected {
+    color: var(--ion-color-primary);
+    // border: solid;
+  }
+  .color-white {
+    color: var(--ion-color-white);
+  }
+  .terms-checkbox {
+    width: 2em;
+    margin-right: 5px;
+  }
+  .text-right {
+    text-align: right;
+  }
+  .no-shadow {
+    box-shadow: none;
+  }
+  .text-center{
+    text-align: center;
+  }
+
+  .back-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    ion-back-button { 
+      color: #ffffff;
+    }
+  }
+}

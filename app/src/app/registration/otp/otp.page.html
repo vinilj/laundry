@@ -1,0 +1,29 @@
+<ion-content>
+  <ion-grid class="input-position">
+    <ion-row>
+      <ion-col>
+        <h2>OTP Verfication</h2>
+        <h5 class="color-gray thin-font ion-no-margin">Enter the OTP sent to +91 {{phoneNumber}}</h5>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="partitioned">
+        <ion-input id="otp1" #otp1 required type="tel" maxlength="1" (keyup)="otpController($event,otp2,'otp')">
+        </ion-input>
+        <ion-input id="otp2" #otp2 required type="tel" maxlength="1" (keyup)="otpController($event,otp3,otp1)">
+        </ion-input>
+        <ion-input id="otp3" #otp3 required type="tel" maxlength="1" (keyup)="otpController($event,otp4,otp2)">
+        </ion-input>
+        <ion-input id="otp4" #otp4 required type="tel" maxlength="1" (keyup)="otpController($event,'otp',otp3)">
+        </ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-button expand="block" color="primary" (click)="submit()">Submit</ion-button>
+    <h5 class="color-gray thin-font text-right">Didn't get OTP ?
+      <strong class="primary-color" (click)="resendOtp()">Resend OTP</strong>
+      <ion-ripple-effect></ion-ripple-effect>
+    </h5>
+
+
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,48 @@
+<div class="card">
+    <div class="bannercontainer">
+        <div class="cards margin-2-0">
+            <h5>Mobile and Dashboard Banners</h5>
+            <div class="row margin-4-0">
+                <div class="col-md-4">
+                    <!-- <mat-radio-group aria-label="Select an option">
+                        <mat-radio-button value="1">Mobile</mat-radio-button>
+                    </mat-radio-group> -->
+
+                    <h6 class="margin-2-0">Mobile Home Banner</h6>
+                    <form [formGroup]="mobileImage" (ngSubmit)="uploadMobileBanner()" id="mobileImage">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="mobileFile" name="mobilebanner" accept=".jpeg,.jpg">
+                            <label class="custom-file-label" for="mobileFile">Choose files</label>
+                        </div>
+                        <div class="float-right">
+                            <button type="submit" class="btn btn-primary margin-2-0">upload</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <!-- <mat-radio-group aria-label="Select an option">
+                        <mat-radio-button value="1">Dashboard</mat-radio-button>
+                    </mat-radio-group> -->
+                    <h6 class="margin-2-0">Dashboard Home Banner</h6>
+                    <form [formGroup]="dashboardImage" (ngSubmit)="uploadDashboardBanner()" id="dashboardImage">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="dashboardFile" name="dashboardbanner" accept=".jpeg,.jpg">
+                            <label class="custom-file-label" for="mobileFile">Choose files</label>
+                        </div>
+                        <div class="float-right">
+                            <button type="submit" class="btn btn-primary margin-2-0">upload</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="img-fluid" src="https://api.coinlaundryindia.com/files/mobile.jpg" alt="mobile Banner" onerror="this.style.display='none'">
+                </div>
+                <div class="col-md-4">
+                    <img class="img-fluid" src="https://api.coinlaundryindia.com/files/web.jpg" alt="Dashboard Banner" onerror="this.style.display='none'">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

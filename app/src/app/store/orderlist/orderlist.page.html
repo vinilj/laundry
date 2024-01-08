@@ -1,0 +1,86 @@
+<ion-header class="background-primary">
+  <ion-grid>
+    <ion-row *ngIf="backupOrders">
+      <ion-col>
+        <h4 class="color-white  wallet-heading">{{backupOrders.name}}</h4>
+        <p class="color-white thin-font ">{{backupOrders.email}}</p>
+        <p class="color-white thin-font ">{{backupOrders.address}}</p>
+      </ion-col>
+    </ion-row>
+    <h3 class="color-white thin-font wallet-heading">Infographics
+      <ion-button color="secondary" (click)="logout()" class="logout-btn">Logout</ion-button>
+    </h3>
+
+    <ion-row>
+      <ion-col>
+        <ion-card class="no-shadow" color="secondary">Self operated <h4>{{selfOperatedCount}}</h4>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class="no-shadow" color="secondary">Dropoff <h4>{{dropOrders.length}}</h4>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <h4>Order list</h4>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles">
+      </ion-refresher-content>
+    </ion-refresher>
+
+    <ion-searchbar mode="ios" showCancelButton="focus" [(ngModel)]="searchTerm" (ionChange)="searchUser($event)">
+    </ion-searchbar>
+
+    <div *ngIf="dropOrders.length">
+
+      <ion-card style="padding: 0; margin: 0;margin-bottom: -2em;" class="no-shadow">
+        <ion-row>
+          <ion-col size="5"> </ion-col>
+          <ion-col size="2"><h5 class="ion-no-margin text-center">Kgs</h5> </ion-col>
+          <ion-col size="2"><h5 class="ion-no-margin text-center">INR</h5> </ion-col>
+          <ion-col size="2"><h5 class="ion-no-margin text-center">Token</h5> </ion-col>
+
+          <ion-col size="1"> </ion-col>
+        </ion-row>
+      </ion-card>
+
+      <ion-card class="no-shadow" *ngFor="let order of dropOrders;let i=index">
+        <ion-row>
+          <ion-col size="5" (click)="goDetail(order.id)">
+            <h4 class="ion-no-margin"> {{order.user.firstName}}</h4>
+            <h5 class="ion-no-margin thin-font">Wash ID-6409090{{order.id}}</h5>
+            <h5 class="ion-no-margin thin-font">{{order.startTime | dateTime}}</h5>
+          </ion-col>
+
+
+          <ion-col size="2">
+            <ion-input type="number" [(ngModel)]="dropOrders[i].weight" class="num-input" placeholder="Kgs"
+              maxlength="10">
+            </ion-input>
+          </ion-col>
+
+          <ion-col size="2">
+            <ion-input type="number" [(ngModel)]="dropOrders[i].amount" class="num-input" placeholder="INR"
+              maxlength="10">
+            </ion-input>
+          </ion-col>
+          <ion-col size="2">
+            <ion-input type="number" [(ngModel)]="dropOrders[i].token" class="num-input" placeholder="Token"
+              maxlength="10">
+            </ion-input>
+          </ion-col>
+
+          <ion-col class="ion-no-padding " size="1">
+            <ion-button color="primary" class="micro-btn" (click)="updateOrder(order)">Go</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </div>
+
+  </ion-grid>
+
+</ion-content>

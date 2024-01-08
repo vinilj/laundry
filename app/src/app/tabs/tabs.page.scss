@@ -1,0 +1,22 @@
+ion-tab-button {
+  img {
+    text-align: center;
+    width: auto;
+    height: 2.5em;
+  }
+}
+.scan-img {
+  --padding-start: 5px;
+  --padding-end: 5px;
+  img {
+    height: 4.5em;
+    text-align: center;
+    //  width: -webkit-fill-available;
+    margin-top: -10px;
+  }
+}
+.tab-selected{
+  // background: blue !important;
+  background: rgba(100, 46, 88, 0.09019607843137255) !important;
+    transition: 0.8s;
+}

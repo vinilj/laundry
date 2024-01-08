@@ -1,0 +1,36 @@
+<div class="row" style="background: white;">
+
+    <div class="col-md-7" style="background: url(../../../assets/img/login.jpg);height: 40em;">
+    </div>
+    <div class="col-md-5">
+        <div class="row">
+            <div class="col-md-9" style="margin-top: 3em;">
+                <p class="margin-0"><span class="larger-font">Welcome to Washby</span> coin Laundrymart</p>
+                <p class="margin-0">Hold hands tight, we are spreading to all corners</p>
+                <p style="margin: 3em 0;">
+                    <img src="../../../assets/img/Group 38.png" style="height:7em" alt="Login Banner">
+                </p>
+            </div>
+            <div class="col-md-6">
+                <h3 class="primary-color">Login Account</h3>
+                <form [formGroup]="loginForm" (ngSubmit)="login()">
+                    <label>Email</label>
+                    <div class="input-group mb-3">
+                        <input type="email" class=" border-bottom-input" placeholder="abc@xyz.com" aria-label="Username" formControlName="email" [(ngModel)]="email" aria-describedby="basic-addon1" required>
+                    </div>
+                    <label>Password</label>
+                    <div class="input-group mb-3">
+                        <input type="password" class=" border-bottom-input" placeholder="******" aria-label="password" formControlName="password" [(ngModel)]="password" aria-describedby="basic-addon1">
+                    </div>
+                    <p>
+                        <a (click)="forgetPassword()">Forgot Password ?</a>
+                        <span *ngIf="forgetResp" class="success" style="padding-right:2em;">{{forgetResp.message}}</span>
+                        <span *ngIf="loginResp" class="danger" style="padding-right:2em;">{{loginResp.message}}</span>
+                        <!-- Forgot Password ? --><span *ngIf="loginResp" class="failed" style="padding-right:2em;">{{loginResp.message}}</span>
+                        <button type="button" class="btn btn-primary float-right" (click)="login()">Login</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,182 @@
+<div class="card">
+    <div class="row">
+        <div class="col-md-10">
+            <div class="float-right">
+                <mat-form-field *ngIf="userType !='FranchiseAdmin' ">
+                    <mat-label>Select Franchise</mat-label>
+                    <mat-select>
+                        <mat-option [value]="0" (click)="selectFranchise(0)">
+                            All
+                        </mat-option>
+                        <mat-option *ngFor="let franchises of allFranchises" [value]="franchises.id" (click)="selectFranchise(franchises.id)">
+                            {{franchises.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="float-right">
+                <mat-form-field class="margin-1-0">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker" [max]="tomorrow" [(ngModel)]="dateField" (dateChange)="onChangeDate($event)" disabled>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker touchUi #picker disabled="false"></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <h5 class="thin-font">Order reports</h5>
+    <p>Order reports show the number of orders has been occurring over a period of time, reports can be filtered by Franchise and date range.</p>
+
+    <div class="row row-margin">
+        <div class="col-4">
+            <div class="report-cards">
+                <h6 class="color-white thin-font">Total</h6>
+                <div class="row">
+                    <div class="col-9 no-right-padding">
+                        <h2 class="color-white text-center">{{totalOrders}}</h2>
+                        <!-- <h6 class="color-white text-center">Yesterday 2135</h6> -->
+                    </div>
+                    <div class="col-3 no-left-padding display-grid">
+                        <img class="card-icon" src="../../../assets/img/uil_arrow-growth.png" alt="">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="report-cards">
+                <h6 class="color-white thin-font">Self Operated</h6>
+                <div class="row">
+                    <div class="col-9 no-right-padding">
+                        <h2 class="color-white text-center">{{selfOperatedCount}}</h2>
+                        <!-- <h6 class="color-white text-center">Yesterday 2135</h6> -->
+                    </div>
+                    <div class="col-3 no-left-padding display-grid">
+                        <img class="card-icon" src="../../../assets/img/Group.png" alt="">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="report-cards">
+                <h6 class="color-white thin-font">Drop Off</h6>
+                <div class="row">
+                    <div class="col-9 no-right-padding">
+                        <h2 class="color-white text-center">{{dropOffCount}}</h2>
+                        <!-- <h6 class="color-white text-center">Yesterday 2135</h6> -->
+                    </div>
+                    <div class="col-3 no-left-padding display-grid">
+                        <img class="card-icon" src="../../../assets/img/Group (1).png" alt="">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <h5 class="thin-font">Payment reports</h5>
+    <p>Payment reports show the overall payment details in a period of time by Franchise.</p>
+    <div class="row row-margin">
+
+        <div class="col-4">
+            <div class="report-cards card-orange">
+                <h6 class="color-white thin-font">Total Payments</h6>
+                <div class="row">
+                    <div class="col-9 no-right-padding">
+                        <h2 class="color-white text-center">{{totalAmnount}}</h2>
+                        <!-- <h6 class="color-white text-center">Yesterday 2135</h6> -->
+                    </div>
+                    <div class="col-3 no-left-padding display-grid">
+                        <img class="card-icon" src="../../../assets/img/payment icon.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="report-cards card-orange">
+                <h6 class="color-white thin-font">Received</h6>
+                <div class="row">
+                    <div class="col-9 no-right-padding">
+                        <h2 class="color-white text-center">{{paidAmount}}</h2>
+                        <!-- <h6 class="color-white text-center">Yesterday 2135</h6> -->
+                    </div>
+                    <div class="col-3 no-left-padding display-grid">
+                        <img class="card-icon" src="../../../assets/img/payment received.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="report-cards card-orange">
+                <h6 class="color-white thin-font">Pending</h6>
+                <div class="row">
+                    <div class="col-9 no-right-padding">
+                        <h2 class="color-white text-center">{{dueAmount}}</h2>
+                        <!-- <h6 class="color-white text-center">Yesterday 2135</h6> -->
+                    </div>
+                    <div class="col-3 no-left-padding display-grid">
+                        <img class="card-icon" src="../../../assets/img/payment received (1).png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <h5 class="thin-font">Machine reports</h5>
+    <p>Machine reports show the total number of machines and their status.</p>
+
+    <div class="row row-margin">
+        <div class="col-4">
+            <div class="report-cards card-purple">
+                <h6 class="color-white thin-font">Total Machines</h6>
+                <div class="row">
+                    <div class="col-9 no-right-padding">
+                        <h2 class="color-white text-center">{{allmachines.length}}</h2>
+                        <!-- <h6 class="color-white text-center">Yesterday 2135</h6> -->
+                    </div>
+                    <div class="col-3 no-left-padding display-grid">
+                        <img class="card-icon" src="../../../assets/img/Vector (2).png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="report-cards card-purple">
+                <h6 class="color-white thin-font">Active</h6>
+                <div class="row">
+                    <div class="col-9 no-right-padding">
+                        <h2 class="color-white text-center">{{activeMachineCount}}</h2>
+                        <!-- <h6 class="color-white text-center">Yesterday 2135</h6> -->
+                    </div>
+                    <div class="col-3 no-left-padding display-grid">
+                        <img class="card-icon" src="../../../assets/img/Group 37.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="report-cards card-purple">
+                <h6 class="color-white thin-font">Inactive</h6>
+                <div class="row">
+                    <div class="col-9 no-right-padding">
+                        <h2 class="color-white text-center">{{inactiveMachineCount}}</h2>
+                        <!-- <h6 class="color-white text-center">Yesterday 2135</h6> -->
+                    </div>
+                    <div class="col-3 no-left-padding display-grid">
+                        <img class="card-icon" src="../../../assets/img/Vector (2).png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" class="banner">
+        <img class="img-fluid" src="http://api.coinlaundryindia.com/files/web.jpg" />
+    </div>
+</div>

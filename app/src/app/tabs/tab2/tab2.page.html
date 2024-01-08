@@ -1,0 +1,40 @@
+<ion-header class="background-primary">
+  <ion-grid>
+    <h4 class="color-white thin-font wallet-heading">Rewarded Coins
+      <span style="margin-left: 26px;">
+       {{totalWalletBalance}}
+      </span>
+    </h4>
+
+    <ion-row>
+      <ion-col>
+        <ion-button color="secondary" expand="block">Rewards</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="secondary" expand="block" (click)="addCoupons()">Recharge</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-card class=" gray-color earned-card">
+      <h4 style="color: #E86F00;" class="thin-font">You Have Earned {{totalWalletBalance}} coins</h4>
+      <h6 class="thin-font color-gray ion-no-margin">*You can use coins at the time of payment</h6>
+
+    </ion-card>
+
+    <ul class="progress">
+      <li *ngFor="let item of allOrders">
+        <h5>{{item.franchise.name}}
+          <span class="ion-float-right">{{item.amount}} INR</span>
+        </h5>
+        <h5 class="ion-no-margin thin-font">{{item.startTime | dateTime}}</h5>
+        <h5 class="ion-no-margin thin-font">Wash ID-6409090{{item.id}}</h5>
+        <h5 class="thin-font round-btn-bordered" *ngIf="item.rewardAmount">Kudos {{item.rewardAmount}} coins added to wallet</h5>
+      </li>
+     
+    </ul>
+  </ion-grid>
+</ion-content>

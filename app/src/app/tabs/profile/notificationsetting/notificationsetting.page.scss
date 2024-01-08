@@ -1,0 +1,16 @@
+.active {
+  border-bottom: 2px solid var(--ion-color-primary);
+  transition: 0.8s;
+}
+.tab-buttons {
+  width: 32%;
+}
+.toggle-checked{
+  --handle-background: gray;
+}
+
+.toggle-checked {
+  .toggle-icon {
+    background: green !important;
+  }
+}

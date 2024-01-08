@@ -1,0 +1,56 @@
+ion-content {
+  --background: var(--ion-color-primary);
+  --color: #ffffff;
+}
+ion-item {
+  --background: var(--ion-color-primary);
+  color: #ffffff;
+  ion-label {
+    white-space: inherit;
+    text-overflow: unset;
+    padding-left: 1em;
+    font-size: 14px;
+    opacity: 1 !important;
+  }
+  ion-radio {
+    --color: #ffffff;
+    --color-checked: #ffffff;
+    // margin: 0 0 1.5em 0;
+    margin: 0;
+    opacity: 1 !important;
+  }
+}
+.white-btn {
+  color: #642e58;
+  font-weight: 800;
+  --background: white;
+  margin: 0 1em;
+  position: absolute;
+  bottom: 10%;
+  width: -webkit-fill-available;
+  border-radius: 5px;
+}
+.name {
+  font-weight: bold;
+  margin-top: 4em;
+  color: #ffffff;
+}
+
+.welcome {
+  font-weight: bolder;
+  font-size: 40px;
+  line-height: 49px;
+  color: #ffffff;
+}
+.company-name {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  color: #ffffff;
+}
+p {
+  color: #ffffff;
+}
+.margin-top-welcome {
+  margin: 25% -1em 0 -1em;
+}

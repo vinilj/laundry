@@ -1,0 +1,60 @@
+<ion-header class="background-primary">
+  <ion-buttons class="back-btn" slot="end">
+    <ion-back-button text="" icon="close"></ion-back-button>
+  </ion-buttons>
+  <app-profileheader></app-profileheader>
+</ion-header>
+
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-button class="transperent-btn tab-buttons" [class.active]="activeTab=='push'" color="secondary"
+        (click)="tab('push')">Push</ion-button>
+      <ion-button class="transperent-btn tab-buttons" [class.active]="activeTab=='sms'" color="secondary"
+        (click)="tab('sms')">SMS</ion-button>
+      <ion-button class="transperent-btn tab-buttons" [class.active]="activeTab=='email'" color="secondary"
+        (click)="tab('email')">Email</ion-button>
+    </ion-row>
+
+
+
+    <div [ngSwitch]="activeTab">
+      <ion-col *ngSwitchCase="'push'">
+        <ion-list class="input-transperent-border">
+
+          <ion-item>
+            <ion-label>Offers Updates</ion-label>
+            <ion-toggle [(ngModel)]="backupPushSubsciption" (ionChange)="updatePermisson()" slot="end" color="primary">
+            </ion-toggle>
+          </ion-item>
+
+        </ion-list>
+      </ion-col>
+      <ion-col *ngSwitchCase="'sms'">
+        <ion-list class="input-transperent-border">
+
+          <ion-item>
+            <ion-label>Offers Updates</ion-label>
+            <ion-toggle [(ngModel)]="backupSmsSubsciption" (ionChange)="updatePermisson()" slot="end" color="primary">
+            </ion-toggle>
+          </ion-item>
+
+        </ion-list>
+      </ion-col>
+      <ion-col *ngSwitchCase="'email'">
+        <ion-list class="input-transperent-border">
+
+          <ion-item>
+            <ion-label>Offers Updates</ion-label>
+            <ion-toggle [(ngModel)]="backupEmailSubsciption" (ionChange)="updatePermisson()" slot="end" color="primary">
+            </ion-toggle>
+          </ion-item>
+
+        </ion-list>
+      </ion-col>
+    </div>
+
+  </ion-grid>
+
+</ion-content>

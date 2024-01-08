@@ -1,0 +1,32 @@
+<ion-content>
+  <ion-grid>
+    <ion-card class="wallet-card">
+      <ion-row>
+        <ion-col>
+          <img src="../../assets/imgs/walletP.png" alt="">
+          <h3> Coin balance
+            <span style="float: right;">{{totalWalletBalance}}</span>
+          </h3>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+
+
+    <h3 class="wallet-heading">Wallet History</h3>
+    <div *ngFor="let item of wallet">
+      <ion-card [ngClass]="{'wallet-history-card': true, 'gray-color': item.transactionType=='credit'}">
+        <h5 class="ion-no-margin">{{item.outletName}}
+          <span
+            [ngClass]="{'ion-float-right': true, 'success-color':item.transactionType=='credit','danger-color':item.transactionType!='credit'}"
+            class=" ">{{item.coins}} INR</span>
+        </h5>
+        <h6 class="ion-no-margin thin-font color-gray">{{item.createdDate | dateTime}}</h6>
+        <h6 class="ion-no-margin thin-font" *ngIf="item.outletName !='Online Recharge'">Wash ID-6409090{{item.orderId}}</h6>
+      </ion-card>
+    </div>
+
+
+   
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,127 @@
+.example-container {
+  height: 41em;
+}
+.btn-container {
+  margin-top: 2em;
+  padding: 0 0.5em;
+}
+
+.notification-btn {
+  background: #e6e6e6;
+  img {
+    width: 1.5em;
+  }
+}
+.btn-profile {
+  padding: 10px;
+  background: none;
+  color: #000;
+}
+.top-nav-position {
+  margin-top: 10px;
+  position: relative;
+  right: 2%;
+}
+.notification-card {
+  padding: 5px;
+  border-radius: 3px;
+  border-left: 3px solid #7aba3a;
+}
+.active-tab {
+  background-color: #642e58;
+  color: #ffffff;
+  .dashboard {
+    background-image: url("../../../assets/img/icons/Vector-1.png") !important;
+  }
+  .graph {
+    background-image: url("../../../assets/img/icons/Vector-9.png") !important;
+  }
+  .reward {
+    background-image: url("../../../assets/img/icons/Vector-7.png") !important;
+  }
+  .back {
+    background-image: url("../../../assets/img/icons/Vector-5.png") !important;
+  }
+  .help {
+    background-image: url("../../../assets/img/icons/Vector-3.png") !important;
+  }
+  .setting {
+    background-image: url("../../../assets/img/icons/Group-3.png") !important;
+  }
+  .group {
+    background-image: url("../../../assets/img/icons/Group-1.png") !important;
+  }
+  .notification {
+    background-image: url("../../../assets/img/icons/Notification-1.png") !important;
+  }
+  .banner {
+    background-image: url("../../../assets/img/icons/banner-1.png") !important;
+  }
+
+  .machine {
+    background-image: url("../../../assets/img/icons/Group 94.png") !important;
+  }
+  .order {
+    background-image: url("../../../assets/img/icons/Group 96.png") !important;
+  }
+  .operator {
+    background-image: url("../../../assets/img/icons/operator-1.png") !important;
+  }
+}
+
+.side-nav-btn {
+  display: block;
+  margin: 10px 0;
+  transition: 0.5s;
+  border: none;
+  border-radius: 5px;
+  .icon-nav {
+    height: 1.1em;
+    width: 1.1em;
+    background-size: 100% 100%;
+    margin: 5px 0;
+  }
+  .dashboard {
+    background-image: url("../../../assets/img/icons/Vector.png");
+  }
+  .graph {
+    background-image: url("../../../assets/img/icons/Vector-8.png");
+  }
+  .reward {
+    background-image: url("../../../assets/img/icons/Vector-6.png");
+  }
+  .back {
+    background-image: url("../../../assets/img/icons/Vector-4.png");
+  }
+  .help {
+    background-image: url("../../../assets/img/icons/Vector-2.png");
+  }
+  .setting {
+    background-image: url("../../../assets/img/icons/Group-2.png");
+  }
+  .group {
+    background-image: url("../../../assets/img/icons/Group.png");
+  }
+  .notification {
+    background-image: url("../../../assets/img/icons/Notification.png");
+  }
+  .banner {
+    background-image: url("../../../assets/img/icons/banner.png");
+  }
+
+  .machine {
+    background-image: url("../../../assets/img/icons/Group 93.png");
+  }
+  .order {
+    background-image: url("../../../assets/img/icons/Group 95.png");
+  }
+
+  .operator {
+    background-image: url("../../../assets/img/icons/operator.png");
+  }
+}
+.caution-img {
+  height: 1em;
+  width: 1em;
+  margin: 5px;
+}

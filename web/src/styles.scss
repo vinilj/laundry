@@ -1,0 +1,212 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import "~@angular/material/theming";
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$web-primary: mat-palette($mat-indigo);
+$web-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$web-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$web-theme: mat-light-theme($web-primary, $web-accent, $web-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($web-theme);
+
+/* You can add global styles to this file, and also import other style files */
+// Custom.scss
+// Option A: Include all of Bootstrap
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6 {
+//   // font-weight: 400;
+// }
+p {
+  margin-bottom: 0.5rem;
+  font-size: 14px;
+  line-height: 17px;
+  color: #787885;
+}
+.thin-font {
+  font-weight: 400;
+}
+.border-bottom-input {
+  border-top: none;
+  border-bottom: 1px solid #bdbdbd;
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  width: 100%;
+}
+
+.border-bottom-input:focus {
+  color: #495057;
+  background-color: #fff;
+  border-top: none;
+  border-bottom: 1px solid #80bdff;
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  outline: 0;
+  box-shadow: 0px 5px 4px -1px rgba(0, 123, 255, 0.2);
+  transition: 0.5s;
+}
+label {
+  color: #cacac7;
+}
+.float-left {
+  float: left;
+}
+.float-right {
+  float: right;
+}
+.primary-color {
+  color: #642e58;
+}
+.color-white {
+  color: #ffffff;
+}
+.btn {
+  line-height: 1 !important;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #642e58;
+  border-color: #642e58;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: #642e58;
+  border-color: #642e58;
+}
+.margin-0 {
+  margin: 0;
+}
+.margin-2-0 {
+  margin: 2em 0;
+}
+.larger-font {
+  font-size: 24px;
+}
+
+body {
+  background: #e5e5e5 !important;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.card {
+  background: #ffffff;
+  padding: 1em;
+  margin: 1em;
+  border-radius: 6px;
+}
+
+.report-cards {
+  margin: 0 3em;
+  padding: 1em;
+  border-radius: 10px;
+  background-image: linear-gradient(to left, #8fb6f7, #2979ff);
+  h2 {
+    text-align: center;
+  }
+}
+.card-orange {
+  background-image: linear-gradient(to left, #fdc571, #ff8652);
+}
+.card-purple {
+  background-image: linear-gradient(to left, #6264a7, #898bd1);
+}
+
+.no-left-padding {
+  padding-left: 0;
+}
+.no-right-padding {
+  padding-right: 0;
+}
+table {
+  width: 100%;
+  margin: 0 5px;
+  box-shadow: none !important;
+  thead {
+    background: #f2f2f2 !important;
+    font-weight: 600;
+    border: none !important;
+    border-radius: 5px !important;
+    th {
+      color: #000000;
+    }
+  }
+  td {
+    border: none !important;
+  }
+}
+mat-paginator {
+  margin: 0 5px;
+}
+.mat-tab-label {
+  width: 33% !important;
+}
+mat-ink-bar {
+  display: none;
+}
+.mat-tab-label-active {
+  .mat-tab-label-content {
+    background: white;
+    padding: 0.5em 11em;
+    opacity: 1;
+    border-radius: 2px;
+  }
+}
+.checkbox {
+  padding: 0 2em;
+}
+.border-solid-input {
+  border: 1px solid #bdbdbd;
+  border-radius: 4px;
+  padding: 5px;
+}
+.display-grid {
+  display: grid;
+}
+.grid-center {
+  margin: auto;
+}
+.page-input {
+  border: 0.8px solid #b3b6b9;
+  padding: 1em;
+}
+.full-width {
+  width: 100%;
+}
+.badge {
+  border-radius: 14.3108px;
+  font-weight: 300;
+  min-width: 4em;
+}
+.success {
+  color: #28a745;
+}
+.warn {
+  color: #ffc107;
+}
+.danger {
+  color: #dc3545;
+}

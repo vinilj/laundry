@@ -1,0 +1,74 @@
+import config from '../datasources/mysql.datasource.config.json';
+import { sendPushNotification } from './sns.service';
+import { sendMail } from './email.service';
+import { orderStatusSMS } from './sms.service';
+
+var mysql = require('mysql');
+const cron = require('node-cron')
+var orderData: any;
+var con = mysql.createConnection({
+    host: config.host,
+    user: config.user,
+    password: config.password,
+    database: config.database
+});
+
+var CurrentDate;
+
+con.connect(function (err: any) {
+    cron.schedule('* * * * *', async () => {
+        if (err) throw err;
+        var restHeader = con.query("SELECT * FROM `Order` WHERE orderStatus='ongoing' AND opertationType='self operated'", function (err: any, result: any, fields: any) {
+            if (err) throw err;
+            for (let i = 0; i < result.length; i++) {
+                orderData = result[i];
+                let dateTime = new Date(result[i].endTime);
+                let dateTimeConverted = dateTime.getTime();
+                var currDate = new Date(),
+                    CurrentDate = currDate.getTime();
+                if (dateTimeConverted <= CurrentDate) {
+                    dataupdate(JSON.parse(JSON.stringify(orderData)));
+                }
+            }
+        });
+        function dataupdate(data: any) {
+            con.query("Update `Order` SET orderStatus='completed' WHERE orderStatus='ongoing' AND id='" + data.id + "'", function (err: any, result: any, fields: any) {
+                if (err) throw err;
+                userData(data.userId, data)
+            })
+        }
+
+        function userData(id:number, data:any){
+            con.query("select * from `User` WHERE id='" + id + "'", function (err: any, result: any, fields: any) {
+                if (err) throw err;
+                let pushData={
+                token:[result[0].deviceToken],
+                body:"Dear customer, Your wash is compleated",
+                head:'Order Status'
+                }
+                sendPushNotification(pushData);
+                result[0].order = data;
+                result[0].body = "orderdelivery"; 
+                sendMail(result[0]);
+                orderStatusSMS(result[0]);
+            })
+        }
+    });
+})
+
+export function updateuserData(userId: any) {
+    if (!con._connectCalled) {
+        con.connect(function (err: any) {
+            if (err) throw err;
+        })
+    }
+    var d = new Date().getTime()+19800000;
+    var curDate = new Date(d).toISOString().slice(0, 19).replace('T', ' ');
+    const walletData = con.query("Update `User` SET lastActivityDate='"+curDate+"', status=1 WHERE id='" + userId + "'", function (err: any, result: any, fields: any) {
+        if (err) throw err;
+        
+    })
+}
+
+
+

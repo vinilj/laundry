@@ -1,0 +1,122 @@
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-grid>
+    <h1>Promising Quality</h1>
+    <h5 class="ion-no-margin">10 years Industry trust</h5>
+
+
+    <ion-card style="margin-top: 11em;" *ngIf="orderDetail">
+      <ion-row>
+        <ion-col size="12">
+
+          <h4 class="card-heading ion-no-margin"><span class="thin-font">Wash type:
+            </span>{{orderDetail.opertationType}}</h4>
+          <h4 class="ion-no-margin">Order ID: 6409090{{orderDetail.id}}</h4>
+          <h4 class="thin-font ion-no-margin" *ngIf="frachise">{{frachise.name}}</h4>
+          <h4 class="thin-font ion-no-margin" style="margin-bottom: 1em;">{{orderDetail.startTime | dateTime}}</h4>
+        </ion-col>
+      </ion-row>
+      <ion-row class="btn-row-gray" *ngIf="orderDetail.opertationType != 'drop off' && orderDetail.btTrigger">
+        <ion-button expand="full">Estimated time</ion-button>
+        <ion-button expand="full">{{orderDetail.remainingTime}} Minutes</ion-button>
+      </ion-row>
+      <ion-row class="btn-row-gray" *ngIf="!orderDetail.btTrigger">
+        <ion-button expand="full">Not Triggered</ion-button>
+        <!-- <ion-button expand="full" (click)="getMachineById()">Start Now</ion-button> -->
+      </ion-row>
+      <!-- *ngIf="!orders.btTrigger" style="float: right; color:red">not triggered -->
+      <ion-row class="btn-row-gray" *ngIf="orderDetail.opertationType == 'drop off'">
+        <ion-button expand="full">Status</ion-button>
+        <ion-button expand="full">{{orderDetail.orderStatus}}</ion-button>
+      </ion-row>
+    </ion-card>
+
+
+    <ion-card class="" *ngIf="orderDetail">
+      <ion-row>
+        <ion-col size="12" *ngIf="orderDetail.paymentStatus != 'paid'">
+
+          <h4 style="margin-bottom: 1em;"
+            *ngIf="orderDetail.opertationType == 'drop off' && orderDetail.orderStatus!=''"><span
+              class="thin-font  primary-color">Wallet Balance: </span>
+            <span class="ion-float-right  primary-color">
+              {{walletBalance}} coin
+            </span> </h4>
+
+          <h4 style="margin-bottom: 1em;"><span class="thin-font ">Charges : </span>
+            <span class="ion-float-right">
+              {{orderDetail.amount}} INR
+            </span> </h4>
+
+          <h4 style="margin-bottom: 1em;"
+            *ngIf="orderDetail.opertationType == 'drop off' && orderDetail.orderStatus!=''"><span
+              class="thin-font ">Coins Deducted: </span>
+            <span class="ion-float-right">
+              {{walletDeduction}} coin
+            </span> </h4>
+
+
+          <h4 style="margin-bottom: 1em;"
+            *ngIf="orderDetail.opertationType == 'drop off' && orderDetail.orderStatus!=''&& couponAmount"><span
+              class="thin-font ">Coupon Amount: </span>
+            <span class="ion-float-right">
+              {{couponAmount.coins}} coin
+            </span> </h4>
+
+          <ion-row *ngIf="orderDetail.paymentStatus == 'due' && orderDetail.orderStatus!='' ">
+
+            <ion-col size='8'>
+              <ion-input type="text" [(ngModel)]="applyCouponCode" class="num-input" placeholder="Apply Coupon"
+                maxlength="10">
+              </ion-input>
+            </ion-col>
+            <ion-col size='4'>
+              <ion-button expand="block" color="primary" (click)="ApplyCouponCode()">Apply</ion-button>
+            </ion-col>
+          </ion-row>
+
+          <h4 style="margin-bottom: 1em;border-top: 1px solid var(--ion-color-primary);padding-top: 1em;"
+            *ngIf="orderDetail.opertationType == 'drop off' && orderDetail.orderStatus!=''"><span
+              class="thin-font ">Amount to be paid: </span>
+            <span class="ion-float-right">
+              {{paidAmount}} INR
+            </span> </h4>
+
+        </ion-col>
+
+        <ion-col size="12" *ngIf="orderDetail.paymentStatus == 'paid'">
+          <h4 style="margin-bottom: 1em;"><span class="thin-font ">Charges </span>
+            <span class="ion-float-right">{{orderDetail.amount}} INR</span> </h4>
+
+          <h4 style="margin-bottom: 1em;" *ngIf="orderDetail.walletDeductions >0"><span class="thin-font ">Wallet
+            Deductions
+            </span>
+            <span class="ion-float-right">{{orderDetail.walletDeductions}} coins</span> </h4>
+
+          <h4 style="margin-bottom: 1em;" *ngIf="orderDetail.promoDeductions >0"><span class="thin-font ">Promocode
+            </span>
+            <span class="ion-float-right">{{orderDetail.promoCode}}</span> </h4>
+
+          <h4 style="margin-bottom: 1em;border-top: 1px solid var(--ion-color-primary);padding-top: 1em;"><span
+              class="thin-font ">Paid amount </span>
+            <span class="ion-float-right">{{orderDetail.transactionAmount}} INR</span> </h4>
+        </ion-col>
+      </ion-row>
+      <ion-row class="btn-row">
+        <ion-button expand="full" color="primary"></ion-button>
+        <ion-button expand="full" color="primary" [disabled]="orderDetail.orderStatus==''"
+          *ngIf="orderDetail.paymentStatus == 'due' && paidAmount>0" (click)='makePayment()'>Pay
+        </ion-button>
+        <ion-button expand="full" color="primary"
+          [disabled]="orderDetail.opertationType == 'drop off' && orderDetail.orderStatus==''"
+          *ngIf="orderDetail.paymentStatus == 'due' && paidAmount==0" (click)='makePayment()'>Deduct From Wallet
+        </ion-button>
+        <ion-button expand="full" color="primary" *ngIf="orderDetail.paymentStatus == 'paid'">Paid</ion-button>
+      </ion-row>
+    </ion-card>
+  </ion-grid>
+</ion-content>

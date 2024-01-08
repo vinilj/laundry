@@ -1,0 +1,42 @@
+.scan {
+  h4 {
+    color: var(--ion-color-primary);
+    text-align: center;
+  }
+  background: #f4f4f4;
+  padding: 1.5em 0;
+  border-radius: 10px;
+}
+.scanConatainer {
+  height: 10em;
+}
+ion-content {
+  --background: transperent;
+}
+ion-grid {
+  padding: 1em 0;
+  background: white;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.scanner-outline{
+ // border: 6px solid white;
+  position: absolute;
+  left: 25%;
+  top: 25.5%;
+  height: 50%;
+  width: 50%;
+}
+.scan-line{
+  fill: #af539a;
+    // animation-duration: 1s; 
+  animation: bounce 3s infinite;
+    // animation-name: bounce; 
+}
+
+@keyframes bounce {
+  0% {transform: translateY(2400px);} 
+  50% {transform: translateY(-6400px);} 
+  100% {transform: translateY(2400px);} 
+} 

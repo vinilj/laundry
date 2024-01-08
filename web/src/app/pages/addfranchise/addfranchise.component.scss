@@ -1,0 +1,19 @@
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+th,
+td {
+    overflow: hidden;
+    width: auto;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+td:hover {
+    overflow: visible;
+    width: auto;
+    white-space: nowrap;
+    background-color: #fff;
+}

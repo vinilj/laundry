@@ -1,0 +1,237 @@
+<ion-header>
+  <ion-toolbar routerLink="/tabs/profile">
+
+    <img class="profile-box" src="../../../assets/imgs/profile.png" alt="">
+    <h3 class="name" *ngIf="user">Hello, {{user.name}}</h3>
+    <!-- <h3 class="name" *ngIf="user">Hello, Aditya</h3> -->
+
+    <p>Welcome to washby</p>
+
+    <!-- <ion-button class="transperent-btn icon-button" slot="end">
+      <ion-icon class="primary-color" name="notifications-outline"></ion-icon>
+    </ion-button> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-grid>
+
+    <!-- Wallet Card -->
+    <ion-card class="wallet-card" routerLink="/tabs/wallet">
+      <ion-row>
+        <ion-col>
+          <img src="../../assets/imgs/walletP.png" alt="">
+          <h3> Coin balance
+            <span style="float: right;">{{totalWalletBalance}}</span>
+          </h3>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <!-- Walllet card end -->
+    <!-- Promotional Banners -->
+    <ion-slides [options]="slideOpts">
+      <ion-slide>
+        <ion-card class="promotional-card">
+          <img src="../../../assets/imgs/banner (1).png" alt="">
+        </ion-card>
+      </ion-slide>
+      <!-- <ion-slide *ngIf="allBanners.length">
+        <ion-card class="promotional-card">
+          <img [src]="allBanners[0]" alt="">
+        </ion-card>
+      </ion-slide> -->
+
+      <!--   <ion-slide>
+        <ion-card class="promotional-card">
+          <img src="../../../assets/imgs/banner (3).png" alt="">
+        </ion-card>
+      </ion-slide> -->
+
+    </ion-slides>
+    <!-- Promotional Banners ends -->
+    <ion-row>
+      <ion-col>
+        <ion-card class="task-cards" (click)="goToTaskCreation()">
+          <h3>Self Operated</h3>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class="task-cards" (click)="goToTaskCreationDrop()">
+          <h3>DropOff</h3>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <!-- Self Operated Card -->
+    <div *ngFor="let orders of allActiveOrders; let i = index">
+      <ion-card class="selfoperated-card" *ngIf="orders.orderStatus != 'completed'">
+        <ion-row>
+          <ion-col size="12">
+            <h5 class="thin-font color-gray ion-no-margin">You choose
+              <strong style="color: #000;">Self Operated
+              </strong>
+            </h5>
+            <h5 class="thin-font color-gray ion-no-margin">Order ID:
+              <strong style="color: #000;">6409090{{orders.id}}</strong>
+              <span *ngIf="!orders.btTrigger  && orders.showRetry== undefined" style="float: right; color:red">not triggered</span>
+              <span *ngIf="orders.showRetry" style="float: right; color:red">
+                <svg class="retrySvg" version="1.1" id="L7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+  viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+ <path fill="#642e58" d="M31.6,3.5C5.9,13.6-6.6,42.7,3.5,68.4c10.1,25.7,39.2,38.3,64.9,28.1l-3.1-7.9c-21.3,8.4-45.4-2-53.8-23.3
+  c-8.4-21.3,2-45.4,23.3-53.8L31.6,3.5z">
+      <animateTransform 
+         attributeName="transform" 
+         attributeType="XML" 
+         type="rotate"
+         dur="2s" 
+         from="0 50 50"
+         to="360 50 50" 
+         repeatCount="indefinite" />
+  </path>
+ <path fill="#642e58" d="M42.3,39.6c5.7-4.3,13.9-3.1,18.1,2.7c4.3,5.7,3.1,13.9-2.7,18.1l4.1,5.5c8.8-6.5,10.6-19,4.1-27.7
+  c-6.5-8.8-19-10.6-27.7-4.1L42.3,39.6z">
+      <animateTransform 
+         attributeName="transform" 
+         attributeType="XML" 
+         type="rotate"
+         dur="1s" 
+         from="0 50 50"
+         to="-360 50 50" 
+         repeatCount="indefinite" />
+  </path>
+ <path fill="#642e58" d="M82,35.7C74.1,18,53.4,10.1,35.7,18S10.1,46.6,18,64.3l7.6-3.4c-6-13.5,0-29.3,13.5-35.3s29.3,0,35.3,13.5
+  L82,35.7z">
+      <animateTransform 
+         attributeName="transform" 
+         attributeType="XML" 
+         type="rotate"
+         dur="2s" 
+         from="0 50 50"
+         to="360 50 50" 
+         repeatCount="indefinite" />
+  </path>
+</svg>
+retrying </span>
+
+            </h5>
+            <h5 class="thin-font color-gray ion-no-margin">Estimated time for completing wash</h5>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="icon-row">
+          <ion-col size="4" class="text-center">
+            <ion-icon name="stopwatch"></ion-icon>
+          </ion-col>
+          <ion-col size="8">
+            <app-countdowntimer [data]="orders"></app-countdowntimer>
+
+            <h6 class="thin-font color-gray ion-no-margin" class="text-center">Time remaining to complete wash</h6>
+          </ion-col>
+        </ion-row>
+        <ion-row class="btn-row">
+          <ion-button expand="full" color="primary" (click)="goToOrder(orders.id)">
+            Payment Status</ion-button>
+          <ion-button expand="full" color="primary" (click)="goToOrder(orders.id)">
+            Order Status</ion-button>
+        </ion-row>
+      </ion-card>
+      <!-- Self Operated Card end -->
+
+
+
+
+      <!-- Feedback card -->
+      <ion-card class="feedback-card" *ngIf="orders.orderStatus == 'completed' && orders.btTrigger && orders.backupFeedback ==''">
+        <ion-row>
+          <ion-col size="12">
+            <h5 class="thin-font color-gray ion-no-margin">Feedback</h5>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size='12' class="stars">
+            <ion-icon [ngClass]="{'active': orders.feedback > 0}" (click)="addFeedback(1,i)" name="star"></ion-icon>
+            <ion-icon [ngClass]="{'active': orders.feedback > 1}" (click)="addFeedback(2,i)" name="star"></ion-icon>
+            <ion-icon [ngClass]="{'active': orders.feedback > 2}" (click)="addFeedback(3,i)" name="star"></ion-icon>
+            <ion-icon [ngClass]="{'active': orders.feedback > 3}" (click)="addFeedback(4,i)" name="star"></ion-icon>
+            <ion-icon [ngClass]="{'active': orders.feedback > 4}" (click)="addFeedback(5,i)" name="star"></ion-icon>
+          </ion-col>
+          <ion-input [(ngModel)]="comments" type="text" class="comment-input" placeholder="Comments"></ion-input>
+        </ion-row>
+        <ion-row class="btn-row">
+          <ion-button expand="full" color="primary" *ngIf="user">{{user.name}}</ion-button>
+          <ion-button expand="full" color="primary" (click)="submit(i)">Submit</ion-button>
+        </ion-row>
+      </ion-card>
+      <!-- Feedback card end -->
+    </div>
+
+
+
+    <!-- Drop Off Card -->
+    <div *ngFor=" let drop of dropOrders; let i = index">
+      <ion-card class="dropoff-card" *ngIf="drop.orderStatus != 'delivered' || drop.paymentStatus !='paid' ">
+        <ion-row>
+          <ion-col size="12">
+            <h5 class="thin-font color-gray ion-no-margin">You choose
+              <strong style="color: #000;">Drop Off</strong>
+            </h5>
+            <h5 class="thin-font color-gray ion-no-margin">Order ID:
+              <strong style="color: #000;">6409090{{drop.id}}</strong>
+            </h5>
+
+            <h5 class="thin-font color-gray ion-no-margin">Track your wash</h5>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col class="status-bar">
+            <app-dropprogress [data]="drop.orderStatus"></app-dropprogress>
+
+          </ion-col>
+        </ion-row>
+        <ion-row class="btn-row">
+          <ion-button expand="full" color="primary" (click)="goToOrder(drop.id)">Payment Status</ion-button>
+          <ion-button expand="full" color="primary" (click)="goToOrder(drop.id)">Order Status</ion-button>
+        </ion-row>
+      </ion-card>
+
+      <!-- Feedback card -->
+      <ion-card class="feedback-card"
+        *ngIf="drop.orderStatus == 'delivered' && drop.backupFeedback=='' && drop.paymentStatus =='paid'">
+        <ion-row>
+          <ion-col size="12">
+            <h5 class="thin-font color-gray ion-no-margin">Feedback</h5>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size='12' class="stars">
+            <ion-icon [ngClass]="{'active': drop.feedback > 0}" (click)="addFeedbackDrop(1,i)" name="star"></ion-icon>
+            <ion-icon [ngClass]="{'active': drop.feedback > 1}" (click)="addFeedbackDrop(2,i)" name="star"></ion-icon>
+            <ion-icon [ngClass]="{'active': drop.feedback > 2}" (click)="addFeedbackDrop(3,i)" name="star"></ion-icon>
+            <ion-icon [ngClass]="{'active': drop.feedback > 3}" (click)="addFeedbackDrop(4,i)" name="star"></ion-icon>
+            <ion-icon [ngClass]="{'active': drop.feedback > 4}" (click)="addFeedbackDrop(5,i)" name="star"></ion-icon>
+          </ion-col>
+          <ion-input [(ngModel)]="commentsDrop" type="text" class="comment-input" placeholder="Comments"></ion-input>
+        </ion-row>
+        <ion-row class="btn-row">
+          <ion-button expand="full" color="primary" *ngIf="user">{{user.name}}</ion-button>
+          <ion-button expand="full" color="primary" (click)="submitDrop(i)">Submit</ion-button>
+        </ion-row>
+      </ion-card>
+      <!-- Feedback card end -->
+
+    </div>
+
+    <!-- Drop off card end -->
+
+
+
+  </ion-grid>
+</ion-content>

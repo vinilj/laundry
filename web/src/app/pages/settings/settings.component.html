@@ -1,0 +1,14 @@
+<div class="card">
+    <h5>Change GST %</h5>
+    <div class="row">
+        <div class="col-md-4">
+            <form [formGroup]="updateGST" (ngSubmit)="updateGSTValue()">
+                <label>GST Value</label>
+                <div class="input-group mb-3">
+                    <input type="text" formControlName="gstValue" class="border-solid-input full-width" aria-describedby="basic-addon1">
+                </div>
+                <button class="btn btn-primary" type="submit" style="margin-top: 3em; float: right;">Update</button>
+            </form>
+        </div>
+    </div>
+</div>

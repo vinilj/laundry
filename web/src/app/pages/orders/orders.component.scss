@@ -1,0 +1,39 @@
+.success {
+    color: green;
+}
+
+.danger {
+    color: red;
+}
+
+.userTitle {
+    font-weight: 600;
+}
+
+.lightRed {
+    color: #e65a2c;
+}
+
+.lightGreen {
+    color: #81ad11;
+}
+
+.text-bold {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.display-tooltip {
+    display: block !important;
+    font-size: 10px;
+    font-weight: normal;
+    color: #000;
+    background-color: #d1d1d1;
+    border-radius: 2px;
+    padding: 0.2em 0.5em;
+    text-align: center;
+}
+
+.text-center {
+    text-align: center !important;
+}

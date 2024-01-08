@@ -1,0 +1,33 @@
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" style="display: grid;height:12em" text-center><img class="profile-box"
+          src="../../../assets/imgs/profile.png" alt=""></ion-col>
+      <ion-col size="8" class="dispay-grid">
+        <div class="header-content" *ngIf="user">
+          <!-- <h3>{{user.name}}</h3> -->
+          <h3>{{user.name}}</h3>
+
+          <p>+91 {{user.mobile}}</p>
+          <p>{{user.email}}</p>
+        </div>
+      </ion-col>
+     
+    </ion-row>
+
+    <ion-fab class="btn-fab">
+      <button (click)="goToHome()" class="close-btn" ion-fab><ion-icon name="close"></ion-icon></button>
+    </ion-fab>
+
+    <ion-card class="wallet-card ion-no-margin-top no-shadow" routerLink="/tabs/wallet">
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <h4 class="primary-color ion-no-margin-top">Total Earned coins <span style="float: right;">{{totalWalletBalance}}</span>
+          </h4>
+
+          <h6 class="thin-font color-gray ion-no-margin">*You can use coins at the time of payment</h6>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+  </ion-grid>

@@ -1,0 +1,35 @@
+<ion-content>
+  <ion-grid class="input-position">
+    <ion-row>
+      <ion-col>
+        <h2>Help us in addressing you</h2>
+
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <form [formGroup]="user" style="width: 100%;">
+        <ion-col size="12">
+          <ion-input type="text" class="num-input" formControlName="firstName" placeholder="First name"></ion-input>
+        </ion-col>
+        <ion-col size="12">
+          <ion-input type="text" class="num-input" formControlName="lastName" placeholder="Last name"></ion-input>
+        </ion-col>
+        <ion-col size="12">
+          <ion-input type="email" class="num-input" formControlName="email" placeholder="Email">
+          </ion-input>
+        </ion-col>
+        <ion-col size="12">
+          <ion-input type="date" class="num-input" formControlName="dob" placeholder="Date of Birth"></ion-input>
+        </ion-col>
+      </form>
+
+    </ion-row>
+    <h5 class="ion-float-left" style="margin: 20px 8px 20px 6px;">Note* </h5>
+    <h5 class="color-gray thin-font ">we use this information just to address you and to share
+      information about offers.</h5>
+
+
+  </ion-grid>
+  <ion-button expand="full" color="primary" class="user-btn" (click)="submit()">Submit</ion-button>
+
+</ion-content>

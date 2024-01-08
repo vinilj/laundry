@@ -1,0 +1,69 @@
+<mat-sidenav-container class="example-container">
+    <mat-sidenav mode="side" opened>
+        <div class="btn-container">
+            <button routerLinkActive="active-tab" class="side-nav-btn" [routerLink]="['/sidenav/dashboard']">
+                <div class="icon-nav dashboard"></div>
+            </button>
+            <!-- <button routerLinkActive="active-tab" class="side-nav-btn" [routerLink]="['/sidenav/charts']">
+                <div class="icon-nav graph"></div>
+            </button> -->
+            <button routerLinkActive="active-tab" *ngIf="user && user.userType=='superAdmin'" class="side-nav-btn " [routerLink]="['/sidenav/reward']">
+                <div class="icon-nav reward"></div>
+            </button>
+
+            <button routerLinkActive="active-tab" *ngIf="user && user.userType=='superAdmin'" class="side-nav-btn " [routerLink]="['/sidenav/banner']">
+                <div class="icon-nav banner"></div>
+            </button>
+            <button routerLinkActive="active-tab" *ngIf="user && user.userType=='superAdmin'" class="side-nav-btn " [routerLink]="['/sidenav/notification']">
+                <div class="icon-nav notification"></div>
+            </button>
+            <button routerLinkActive="active-tab" class="side-nav-btn " [routerLink]="['/sidenav/orders']">
+                <div class="icon-nav order"></div>
+            </button>
+            <button routerLinkActive="active-tab" class="side-nav-btn " [routerLink]="['/sidenav/machine']">
+                <div class="icon-nav machine"></div>
+            </button>
+            <button routerLinkActive="active-tab" *ngIf="user && user.userType=='FranchiseAdmin'" class="side-nav-btn " [routerLink]="['/sidenav/addoperator']">
+                <div class="icon-nav operator"></div>
+            </button>
+            <button routerLinkActive="active-tab" *ngIf="user && user.userType=='superAdmin'" class="side-nav-btn " [routerLink]="['/sidenav/addfranchise']">
+                <div class="icon-nav operator"></div>
+            </button>
+            <div style="position: absolute;bottom: 5px;">
+                <!-- <button routerLinkActive="active-tab" class="side-nav-btn " [routerLink]="['/sidenav/addoperator']">
+                    <div class="icon-nav help"></div>
+                </button> -->
+                <button routerLinkActive="active-tab" class="side-nav-btn " [routerLink]="['/sidenav/settings']">
+                    <div class="icon-nav setting"></div>
+                </button>
+                <!-- <button routerLinkActive="active-tab" class="side-nav-btn " [routerLink]="['/sidenav/orders']">
+                    <div class="icon-nav group"></div>
+                </button> -->
+            </div>
+        </div>
+    </mat-sidenav>
+
+
+    <mat-sidenav-content>
+        <div class="row" class="top-nav-position">
+            <button mat-button class="notification-btn float-right"><img src="../../../assets/img/Notification.png"
+                    alt=""></button>
+            <div class="dropdown">
+                <button mat-button class="btn btn-secondary dropdown-toggle btn-profile float-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="user">
+                    {{user.firstName}}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" (click)="updatePassword()">Update Password</a>
+
+                    <a class="dropdown-item" (click)="logOut()">LogOut</a>
+                </div>
+            </div>
+        </div>
+        <div class="row full-width margin-0">
+            <div class="card full-width notification-card">
+                <img class="caution-img" src="../../../assets/img/et_caution.png" alt="">
+            </div>
+        </div>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

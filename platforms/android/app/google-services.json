@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "562034202458",
+    "firebase_url": "https://makonis-cfa76.firebaseio.com",
+    "project_id": "makonis-cfa76",
+    "storage_bucket": "makonis-cfa76.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:562034202458:android:d421f5b5102ac7a1634563",
+        "android_client_info": {
+          "package_name": "com.makonis.coinlaundry"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "562034202458-6g5riat16vrmqjulsb3a4ahbt5prvpe5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZx_ftRmBlm8OsX5H8PnAQZV69DBVMPro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "562034202458-6g5riat16vrmqjulsb3a4ahbt5prvpe5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,23 @@
+// ion-content {
+//   --background:url('../../../assets/imgs/onboarding-4.png');
+//   // --background: var(--ion-color-primary);
+// }
+ion-slides {
+  height: -webkit-fill-available;
+  background: url("../../../assets/imgs/onboarding-4.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  img {
+    position: absolute;
+    top: 10%;
+  }
+}
+h1 {
+  color: #ffffff;
+}
+.btn-next {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 11;
+}

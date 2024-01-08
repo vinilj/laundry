@@ -1,0 +1,49 @@
+<ion-header class="background-primary">
+  <ion-buttons class="back-btn" slot="end">
+    <ion-back-button text="" icon="close"></ion-back-button>
+  </ion-buttons>
+  <app-profileheader></app-profileheader>
+</ion-header>
+
+
+<ion-content>
+  <ion-list class="list-item">
+    <ion-item routerLink="/tabs/profile/userform">
+      <ion-icon class="color-gray" name="settings"></ion-icon>
+      <ion-label>Account settings</ion-label>
+    </ion-item>
+    <!-- <ion-item routerLink="/tabs/orderhistory">
+      <ion-icon class="color-gray" name="home" slot="start"></ion-icon>
+      <ion-label>Transaction History</ion-label>
+    </ion-item> -->
+    <ion-item routerLink="/tabs/profile/notificationsetting">
+      <ion-icon class="color-gray" name="notifications-off"></ion-icon>
+      <ion-label>Notification preference</ion-label>
+    </ion-item>
+    <ion-item (click)="showSupport()">
+      <ion-icon class="color-gray" name="call" slot="start"></ion-icon>
+      <ion-label>Support</ion-label>
+    </ion-item>
+    <ion-item (click)="showPrivacy()">
+      <ion-icon class="color-gray" name="document" slot="start"></ion-icon>
+      <ion-label>Privacy Policy</ion-label>
+    </ion-item>
+    <ion-item (click)="showFeedback()">
+      <ion-icon class="color-gray" name="chatbubbles"></ion-icon>
+      <ion-label>Feedback</ion-label>
+    </ion-item>
+    <ion-item (click)="showLegal()">
+      <ion-icon class="color-gray" name="document"></ion-icon>
+      <ion-label>Legal</ion-label>
+    </ion-item>
+    <ion-item (click)="share()">
+      <ion-icon class="color-gray" name="share"></ion-icon>
+      <ion-label>Share</ion-label>
+    </ion-item>
+    <ion-item (click)="logout()">
+      <ion-icon class="color-gray" name="log-out"></ion-icon>
+      <ion-label>Logout</ion-label>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

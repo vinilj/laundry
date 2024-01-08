@@ -1,0 +1,58 @@
+<ion-header class="background-primary">
+  <ion-buttons class="back-btn" slot="end">
+    <ion-back-button text="" icon="close"></ion-back-button>
+  </ion-buttons>
+  <app-profileheader></app-profileheader>
+</ion-header>
+
+<ion-content>
+  <ion-grid *ngIf="user">
+    <ion-item>
+      <ion-label class="label-color" position="floating">First name</ion-label>
+      <ion-input [(ngModel)]="user.firstName" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="label-color" position="floating">Last name</ion-label>
+      <ion-input [(ngModel)]="user.lastName" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="label-color" position="floating">Mobile Number</ion-label>
+      <ion-input [(ngModel)]="user.mobile" type="tel" maxLength="10"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="label-color" position="floating">Email</ion-label>
+      <ion-input [(ngModel)]="user.email" type="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="label-color" position="floating">Date of Birth</ion-label>
+      <ion-input [(ngModel)]="user.dob" type="date"></ion-input>
+    </ion-item>
+    <ion-radio-group class="input-transperent-border" [(ngModel)]="user.stayIn">
+      <h5 class="label-color thin-font">
+        Living type
+      </h5>
+      <ion-row>
+        <ion-col size="3" class="ion-no-padding">
+          <ion-item>
+            <ion-label>Home</ion-label>
+            <ion-radio slot="start" value="Home" (click)="updateStay('Home')"></ion-radio>
+          </ion-item>
+        </ion-col>
+        <ion-col size="5" class="ion-no-padding text-center">
+          <ion-item>
+            <ion-label>Paying Guest</ion-label>
+            <ion-radio slot="start" value="Paying Guest" (click)="updateStay('Paying Guest')"></ion-radio>
+          </ion-item>
+        </ion-col>
+        <ion-col size="3" class="ion-no-padding">
+          <ion-item>
+            <ion-label>Hostel</ion-label>
+            <ion-radio slot="start" value="Hostel" (click)="updateStay('Hostel')"></ion-radio>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-radio-group>
+    <ion-button color="primary" expand="block" (click)="updateUserData()">Submit</ion-button>
+
+  </ion-grid>
+</ion-content>

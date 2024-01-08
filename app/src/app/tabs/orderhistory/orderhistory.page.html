@@ -1,0 +1,19 @@
+<ion-content>
+
+
+
+  <ion-grid>
+    <h3 class="order-history-heading">
+      Order History
+    </h3>
+
+    <ion-card class="order-history-card gray-color" *ngFor="let orders of allOrders">
+      <h5 class="ion-no-margin">{{orders.franchise.name}}</h5> <span
+        class="ion-float-right success-color">{{orders.orderStatus}}</span>
+      <p class="ion-no-margin">{{orders.startTime | dateTime}}</p>
+      <h6 class="ion-no-margin">Wash ID-6409090{{orders.id}}</h6>
+      <h5 class="ion-no-margin" *ngIf="orders.opertationType">Wash type: {{orders.opertationType}}</h5>
+    </ion-card>
+
+  </ion-grid>
+</ion-content>

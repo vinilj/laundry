@@ -1,0 +1,64 @@
+<ion-content>
+  <ion-grid>
+    <ion-card class="">
+      <ion-row>
+        <ion-col size="12">
+          <h4 style="margin-bottom: 1em;"><span class="thin-font primary-color">Machine Id: </span>
+            {{machineData.id}}
+          </h4>
+          <h4 style="margin-bottom: 1em;"><span class="thin-font primary-color">Wallet Balance: </span>
+            <span class="ion-float-right primary-color">
+              {{walletBalance}} coin
+            </span> </h4>
+
+          <h4 style="margin-bottom: 1em;"><span class="thin-font ">Charges : </span>
+            <span class="ion-float-right ">
+              {{machineData.charges}} INR
+            </span> </h4>
+
+          <h4 style="margin-bottom: 1em;"><span class="thin-font ">Wallet Deductions: </span>
+            <span class="ion-float-right">
+              {{walletDeduction}} coin
+            </span> </h4>
+
+
+          <h4 style="margin-bottom: 1em;" *ngIf="couponAmount"><span class="thin-font ">Coupon Amount: </span>
+            <span class="ion-float-right">
+              {{couponAmount.coins}} coin
+            </span> </h4>
+
+          <ion-row>
+
+            <ion-col size='8'>
+              <ion-input type="text" [(ngModel)]="applyCouponCode" class="num-input" placeholder="Apply Coupon"
+                maxlength="10">
+              </ion-input>
+            </ion-col>
+            <ion-col size='4' class="ion-no-padding">
+              <ion-button expand="block" color="primary" (click)="ApplyCouponCode()">Apply
+              </ion-button>
+            </ion-col>
+          </ion-row>
+
+          <h4 style="margin-bottom: 1em;border-top: 1px solid var(--ion-color-primary);padding-top: 1em;"><span
+              class="thin-font ">Amount to be paid: </span>
+            <span class="ion-float-right">
+              {{paidAmount}} INR
+            </span> </h4>
+
+
+        </ion-col>
+      </ion-row>
+      <ion-row class="btn-row">
+        <!-- <ion-button expand="full" color="primary"></ion-button> -->
+        <ion-button expand="full" style="width: 100%;" color="primary" *ngIf="paidAmount > 0" (click)='makePayment()'>
+          Pay
+        </ion-button>
+        <ion-button expand="full" style="width: 100%;" color="primary" *ngIf="paidAmount == 0" (click)="makePayment()">
+          Proceed with deduction
+        </ion-button>
+
+      </ion-row>
+    </ion-card>
+  </ion-grid>
+</ion-content>
