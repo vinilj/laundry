@@ -125,9 +125,21 @@ export class OrderController {
   })
   // @authenticate('jwt', { required: [PermissionKeys.SuperAdmin, PermissionKeys.AccessAuthFeatures] })
   async find(
-    @param.query.object('filter', getFilterSchemaFor(Order)) filter?: Filter<any>,
+    @param.query.object('filter', getFilterSchemaFor(Order)) filter?: any,
   ): Promise<any> {
     console.log('Jac Log: ',filter)
+     let where :any = {}
+     if(!filter.startDate){
+      const currentDate = new Date()
+      const month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-indexed, so add 1
+      const day = currentDate.getDate().toString().padStart(2, '0');
+      const year = currentDate.getFullYear();
+      // Format the date as MM/DD/YYYY
+     // filter.startDate = `${month}/${day}/${year}`;
+      where.startDate = `${month}/${day}/${year}`;
+    } else {
+      where.startDate = filter.startDate;
+    }
     let orders = this.orderRepository.find({
       include: [
         {
@@ -136,7 +148,10 @@ export class OrderController {
         { relation: 'franchise' }
       ],
       offset: filter?.offset,
-      limit: filter?.limit
+      limit: filter?.limit,
+      where: {
+        startTime: filter?.startDate
+      }
     });
     return orders;
   }
